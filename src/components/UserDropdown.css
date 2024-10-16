@@ -1,0 +1,40 @@
+/* src/components/UserDropdown.css */
+
+.user-dropdown {
+  position: absolute;
+  top: 80px; /* Increase to move dropdown further below */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.dropdown-link {
+  position: relative; /* Add relative positioning for the pseudo-element */
+  display: block;
+  padding: 5px;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s, background-color 0.3s;
+  text-align: left;
+}
+
+.dropdown-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Adjust the distance from the text */
+  width: 0;
+  height: 2px; /* Adjust thickness of the underline */
+  background-color: #333;
+  transition: width 0.3s ease; /* Controls the speed and easing of the underline */
+}
+
+.dropdown-link:hover::after {
+  width: 100%; /* Expands the underline from left to right on hover */
+}

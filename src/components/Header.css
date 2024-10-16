@@ -1,0 +1,201 @@
+/* src/components/Header/Header.css */
+
+/* Header.css */
+
+/* Add this to your existing CSS */
+.logo-text {
+  font-family: "Erica One", sans-serif; /* Use Erica One font */
+  font-size: 40px; /* Adjust size as needed */
+  text-align: center; /* Center the text */
+  line-height: 1.2; /* Adjust line height for spacing */
+  margin: 0; /* Remove default margin */
+  text-decoration: none;
+  color: #fff;
+  font-weight: 200;
+}
+
+.header-logo a {
+  text-decoration: none; /* Remove underline from the Link */
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 50px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Center the header navigation */
+.header-nav {
+  display: flex; /* Flexbox for nav links */
+  align-items: center; /* Center nav items */
+  justify-content: center; /* Center the nav items */
+  flex: 2; /* Allow it to grow and take space */
+  gap: 20px; /* Space between links */
+  margin: 0 auto; /* Center the nav */
+}
+
+.header.scrolled,
+.header:hover {
+  background-color: white; /* Change to white when scrolled or hovered */
+}
+
+/* Change text and icon color based on header state */
+.header.scrolled .nav-link,
+.header:hover .nav-link,
+.header.scrolled .header-icons .icon,
+.header:hover .header-icons .icon,
+.header.scrolled .logo-text,
+.header:hover .logo-text {
+  color: black; /* Change text and icon color to black when scrolled or hovered */
+}
+
+.header-logo img {
+  height: 100px; /* Adjust logo size as needed */
+}
+
+.nav-link {
+  color: white; /* Default color for transparent header */
+  text-decoration: none; /* Remove underline */
+  font-weight: 600; /* Bold font weight */
+  font-size: 20px; /* Font size */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.header-icons {
+  display: flex; /* Flexbox for icons */
+  align-items: center; /* Center icons */
+  flex: 1; /* Adjust flex to give space */
+  justify-content: flex-end; /* Align icons to the right */
+  gap: 30px; /* Space between icons */
+}
+
+.icon {
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Menu icon for mobile */
+.header-menu-icon {
+  display: none; /* Hide by default */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+@media (max-width: 1343px) {
+  .header {
+    height: 70px;
+  }
+
+  .header-nav {
+    flex-direction: column; /* Stack nav items */
+    gap: 10px; /* Space between links */
+    position: absolute; /* Position absolute */
+    top: 100%; /* Position below header */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center adjustment */
+    width: 100%; /* Full width */
+    background-color: rgba(255, 255, 255, 0.9); /* Background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+    padding: 10px 0; /* Padding */
+    display: none; /* Hide nav by default */
+  }
+
+  .header-nav.open {
+    display: flex; /* Show nav when open */
+  }
+
+  .header-logo {
+    position: absolute; /* Position absolute */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center adjustment */
+    order: 1; /* Adjust order */
+  }
+
+  .header-icons {
+    order: 2; /* Adjust order for icons */
+  }
+
+  .header-menu-icon {
+    display: block; /* Show menu icon on mobile */
+    font-size: 1.5em; /* Font size */
+  }
+
+  .logo-text {
+    font-size: 30px; /* Adjust size as needed */
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 70px;
+  }
+
+  .header-nav {
+    flex-direction: column; /* Stack nav items */
+    gap: 10px; /* Space between links */
+    position: absolute; /* Position absolute */
+    top: 100%; /* Position below header */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center adjustment */
+    width: 100%; /* Full width */
+    background-color: rgba(255, 255, 255, 0.9); /* Background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+    padding: 10px 0; /* Padding */
+    display: none; /* Hide nav by default */
+  }
+
+  .header-nav.open {
+    display: flex; /* Show nav when open */
+  }
+
+  .header-logo {
+    position: absolute; /* Position absolute */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center adjustment */
+    order: 1; /* Adjust order */
+  }
+
+  .header-icons {
+    order: 2; /* Adjust order for icons */
+  }
+
+  .header-menu-icon {
+    display: block; /* Show menu icon on mobile */
+    font-size: 1.5em; /* Font size */
+  }
+
+  .logo-text {
+    font-size: 30px; /* Adjust size as needed */
+  }
+}
+
+/* Styling for hover effect on nav links */
+.nav-link {
+  position: relative; /* Position for pseudo-element */
+  color: #fff; /* Default link color */
+}
+
+.nav-link::after {
+  content: ""; /* Pseudo-element */
+  position: absolute; /* Position absolutely */
+  left: 0; /* Align left */
+  bottom: -3px; /* Adjust the distance from text */
+  width: 0; /* Initial width */
+  height: 2px; /* Adjust thickness of the underline */
+  background-color: #333; /* Underline color */
+  transition: width 0.3s ease; /* Smooth underline transition */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Expand underline on hover */
+}
+
+.nav-link:hover {
+  color: #000; /* Change link color on hover */
+}
