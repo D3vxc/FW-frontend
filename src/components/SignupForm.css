@@ -1,6 +1,7 @@
 /* src/components/SignupForm.css */
 
 .signup-form-container {
+  padding-top: 300px;
   width: 300px;
   margin: 0 auto;
   text-align: center;
@@ -78,4 +79,26 @@ input[type="password"] {
 
 .login-button:hover {
   background-color: #306fbb;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  width: 100%; /* Make the input take full width */
+  padding-right: 40px; /* Add padding to the right for the icon */
+}
+
+.toggle-visibility {
+  position: absolute;
+  right: 10px; /* Adjust based on your design */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666; /* Change to your preferred color */
+  padding: 0; /* Remove any padding */
+  margin: 0; /* Remove any margin */
 }

@@ -1,7 +1,3 @@
-/* src/components/Header/Header.css */
-
-/* Header.css */
-
 /* Add this to your existing CSS */
 .logo-text {
   font-family: "Erica One", sans-serif; /* Use Erica One font */
@@ -12,6 +8,12 @@
   text-decoration: none;
   color: #fff;
   font-weight: 200;
+}
+
+.header-logo {
+  display: flex;
+  justify-content: flex-start;
+  width: 27%;
 }
 
 .header-logo a {
@@ -40,6 +42,7 @@
   flex: 2; /* Allow it to grow and take space */
   gap: 20px; /* Space between links */
   margin: 0 auto; /* Center the nav */
+  color: #fff; /* Default color for transparent header */
 }
 
 .header.scrolled,
@@ -75,6 +78,7 @@
   flex: 1; /* Adjust flex to give space */
   justify-content: flex-end; /* Align icons to the right */
   gap: 30px; /* Space between icons */
+  color: #fff;
 }
 
 .icon {
@@ -88,6 +92,11 @@
 }
 
 @media (max-width: 1343px) {
+  .header-logo {
+    display: flex;
+    justify-content: center;
+  }
+
   .header {
     height: 70px;
   }
@@ -132,6 +141,13 @@
 }
 
 @media (max-width: 768px) {
+  .header-logo {
+    display: flex;
+    justify-content: center;
+  }
+  /* .header-logo h1 {
+    font-size: 20px;
+  } */
   .header {
     height: 70px;
   }

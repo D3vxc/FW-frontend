@@ -1,0 +1,40 @@
+.product-showcase {
+  padding: 40px 20px;
+}
+
+.product-showcase h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  width: 200px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-card h3 {
+  margin-top: 10px;
+  font-size: 1.3em;
+}
+
+.product-card p {
+  margin-top: 5px;
+  font-size: 1.1em;
+}

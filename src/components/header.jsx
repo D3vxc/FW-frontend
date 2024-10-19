@@ -1,18 +1,22 @@
 // src/components/Header/Header.js
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { FaSearch, FaUser, FaShoppingCart, FaBars } from 'react-icons/fa';
 import BlackLogo from '../assets/Logo/kttle-black-without-bg.png';
-import WhiteLogo from '../assets/Logo/kttle-white-without-bg.png'; // Assuming you have a white logo
+import WhiteLogo from '../assets/Logo/kttle-white-without-bg.png';
 import UserDropdown from '../components/UserDropdown';
+import { toast } from 'react-toastify'; // Import toast
+
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSignupVisible, setSignupVisible] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
     const dropdownRef = useRef(null);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -23,11 +27,7 @@ const Header = () => {
     };
 
     const handleScroll = () => {
-        if (window.scrollY > 0) {
-            setIsScrolled(true);
-        } else {
-            setIsScrolled(false);
-        }
+        setIsScrolled(window.scrollY > 0);
     };
 
     const handleClickOutside = (event) => {
@@ -36,9 +36,22 @@ const Header = () => {
         }
     };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+    const handleLogout = () => {
+        // Clear the token from local storage
+        localStorage.removeItem('token');
+        setIsLoggedIn(false); // Update the login state
+        toast.success('Logged out successfully!'); // Toast notification
+        navigate('/'); // Redirect to the home page after logout
+    };
 
+    useEffect(() => {
+        // Check if the user is logged in (e.g., check for the token in local storage)
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+
+        window.addEventListener('scroll', handleScroll);
         if (isSignupVisible) {
             document.addEventListener('mousedown', handleClickOutside);
         } else {
@@ -76,7 +89,8 @@ const Header = () => {
                 <FaSearch className="icon" title="Search" />
                 <div className="user-icon" onClick={toggleSignup} ref={dropdownRef}>
                     <FaUser className="icon" title="User" />
-                    {isSignupVisible && <UserDropdown />} {/* Display dropdown when visible */}
+                    {/* Show UserDropdown based on login status */}
+                    {isSignupVisible && <UserDropdown isLoggedIn={isLoggedIn} onLogout={handleLogout} />}
                 </div>
                 <FaShoppingCart className="icon" title="Cart" />
             </div>

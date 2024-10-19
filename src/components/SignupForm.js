@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaFacebookF, FaGoogle } from 'react-icons/fa';
+import { FaFacebookF, FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa'; // Import visibility icons
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './SignupForm.css';
 import API_BASE_URL from './config'; // Adjust the path as necessary
@@ -15,6 +15,8 @@ const SignupForm = () => {
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [isRegisterPasswordVisible, setIsRegisterPasswordVisible] = useState(false); // For registration password visibility
+    const [isLoginPasswordVisible, setIsLoginPasswordVisible] = useState(false); // For login password visibility
 
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -124,13 +126,22 @@ const SignupForm = () => {
                             onChange={(e) => setRegisterEmail(e.target.value)}
                             required
                         />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={registerPassword}
-                            onChange={(e) => setRegisterPassword(e.target.value)}
-                            required
-                        />
+                        <div className="password-input">
+                            <input
+                                type={isRegisterPasswordVisible ? 'text' : 'password'} // Toggle between text and password
+                                placeholder="Password"
+                                value={registerPassword}
+                                onChange={(e) => setRegisterPassword(e.target.value)}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="toggle-visibility"
+                                onClick={() => setIsRegisterPasswordVisible(!isRegisterPasswordVisible)}
+                            >
+                                {isRegisterPasswordVisible ? <FaEyeSlash /> : <FaEye />} {/* Toggle icon */}
+                            </button>
+                        </div>
                     </>
                 )}
                 {!isRegistering && (
@@ -142,13 +153,22 @@ const SignupForm = () => {
                             onChange={(e) => setLoginEmail(e.target.value)}
                             required
                         />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={loginPassword}
-                            onChange={(e) => setLoginPassword(e.target.value)}
-                            required
-                        />
+                        <div className="password-input">
+                            <input
+                                type={isLoginPasswordVisible ? 'text' : 'password'} // Toggle between text and password
+                                placeholder="Password"
+                                value={loginPassword}
+                                onChange={(e) => setLoginPassword(e.target.value)}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="toggle-visibility"
+                                onClick={() => setIsLoginPasswordVisible(!isLoginPasswordVisible)}
+                            >
+                                {isLoginPasswordVisible ? <FaEyeSlash /> : <FaEye />} {/* Toggle icon */}
+                            </button>
+                        </div>
                         <div className="options">
                             <label>
                                 <input
